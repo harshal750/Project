@@ -1,0 +1,525 @@
+<html>
+    <style>
+   body 
+   {
+    background-color:white;      /*set background color to webpage*/
+   } 
+
+   h1{
+       color: red;
+   }
+
+   input {                                    /*Decorate input textbox and text*/
+    width: 30%;
+    height: 5%;
+    border-radius: 7px;
+    border-color:lawngreen;
+    display: inline-block;
+    margin-bottom: 0%;
+    
+   }
+
+ .div {
+   width: 100%;
+   height: 10%;
+   background-color:lightsteelblue;
+   font-size: 150%;
+ }
+
+
+    </style>
+<body>
+<div class="div">    
+<h1>Please Fill This Application Form</h1> 
+
+<!-- Created a application form design-->
+</div>
+<form id="frm" name="cstform" onsubmit="strg()" action="result.html"> 
+<h2>Customer Name</h2>
+<p><input type="text" name="cname" id="cstnm" placeholder="e.g John Charles"></p>
+<h2>Email</h2>
+<p><input type="text" name="mail" id="cstmail" placeholder="e.g xyz@abc.com"></p>
+<h2>PAN Number</h2>
+<p><input type="text" name="panno" id="cstpan" maxlength="10" placeholder="e.g ABCDE1234F" style="text-transform: uppercase;"></p>
+<h2>Loan Amount</h2>
+<p><input type="text" name="amount" id="cstamnt" placeholder="e.g 90250332" maxlength="9"><h2 style="color: red;"><p id="demo"></p></h2></p>
+<h2>Captcha</h2>
+
+<script>                              /*Captcha generation using miliseconds and seconds*/
+    var dt = new Date();
+    var mili = dt.getMilliseconds();
+    var sec = dt.getSeconds();
+    var res= mili + sec;
+function capgen()
+{
+    document.getElementById("capdiv").value = document.write(mili);document.write("+"); document.write(sec); 
+}
+
+function disp()
+{
+var dg = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eigth","Nine"];
+var twdg = ["Ten","Twenty","Thirty","Fourty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+var onedg= ["Ten","Eleven","Twelwe","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+var temp=[];
+var text = " ";
+var i=0,a=0;
+var con=[];
+temp = document.getElementById("cstamnt").value;
+var len = temp.length;
+
+if(len == 9)
+{
+con = text.split(' ');
+if(temp[0] == 1){
+a = temp[1];
+text += onedg[a] + " Crore ";}
+else{
+a = temp[i];
+a--;
+text+= twdg[a] + " ";
+i++;
+a = temp[i];
+text+= dg[a] + " Crore ";
+}
+if(temp[2] == 1){
+var b = temp[3];
+text+= onedg[b] + " Lacs ";}
+else{
+i=2;
+b = temp[i];
+b--;
+text+= twdg[b] + " ";
+i++;
+b = temp[i];
+text+= dg[b] + " Lacs ";
+}
+if(temp[4] == 1){
+var c = temp[5];
+text+= onedg[c] + " Thousands ";}
+else{
+i=4;
+c = temp[i];
+c--;
+text+= twdg[c] + " ";
+i++;
+c = temp[i];
+text+= dg[c] + " Thousands ";
+}
+if(temp[6] == 1){
+var d = temp[6];
+text+= dg[d] + " Hundred ";}
+else{
+i=6;
+d = temp[i];
+text+= dg[d] + " Hundred ";
+}
+if(temp[7] == 1){
+var e = temp[8];
+text+=onedg[e];}
+else{
+i=7;
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];}
+}
+
+
+if(len == 8)
+{
+i=0;
+if(temp[i] == 1){
+a = temp[i];
+text += dg[a] + " Crore ";
+i++;}
+else{
+a = temp[i];
+text+= dg[a] + " Crore ";
+i++;
+}
+if(temp[i] == 1){
+var b = temp[i];
+text+= onedg[b] + " Lacs ";
+i++;}
+else{
+b = temp[i];
+b--;
+text+= twdg[b] + " ";
+i++;
+b = temp[i];
+text+= dg[b] + " Lacs ";
+i++;
+}
+if(temp[i] == 1){
+var c = temp[i];
+text+= onedg[c] + " Thousands ";
+i++;}
+else{
+c = temp[i];
+c--;
+text+= twdg[c] + " ";
+i++;
+c = temp[i];
+text+= dg[c] + " Thousands ";
+i++;
+}
+if(temp[i] == 1){
+var d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;}
+else{
+d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;
+}
+if(temp[i] == 1){
+var e = temp[i];
+text+= onedg[e];
+i++;}
+else{
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];
+}
+}
+
+if(len == 7)
+{
+i=0;
+if(temp[i] == 1){
+i++;
+a = temp[i];
+text += onedg[a] + " Lacs ";
+i++;}
+else{
+a = temp[i];
+a--;
+text+= twdg[a] + " ";
+i++;
+a = temp[i];
+text+= dg[a] + " Lacs ";
+i++;
+}
+if(temp[i] == 1){
+i++;
+var b = temp[i];
+text+= onedg[b] + " Thousands ";
+i++;}
+else{
+b = temp[i];
+b--;
+text+= twdg[b] + " ";
+i++;
+b = temp[i];
+text+= dg[b] + " Thousands ";
+i++;
+}
+if(temp[i] == 1){
+var d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;}
+else{
+d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;
+}
+if(temp[i] == 1){
+i++;
+var e = temp[i];
+text+= onedg[e];
+i++;}
+else{
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];
+}
+}
+if(len == 6)
+{
+i=0;
+if(temp[i] == 1){
+a = temp[i];
+text += dg[a] + " Lacs ";
+i++;}
+else{
+a = temp[i];
+text+= dg[a] + " Lacs ";
+i++;
+}
+if(temp[i] == 1){
+var b = temp[i];
+text+= onedg[b] + " Thousands ";
+i++;}
+else{
+b = temp[i];
+b--;
+text+= twdg[b] + " ";
+i++;
+b = temp[i];
+text+= dg[b] + " Thousands ";
+i++;
+}
+if(temp[i] == 1){
+var d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;}
+else{
+d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;
+}
+if(temp[i] == 1){
+var e = temp[i];
+text+= onedg[e];
+i++;}
+else{
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];
+}
+}
+
+if(len == 5)
+{
+i=0;
+if(temp[i] == 1){
+i++;
+var b = temp[i];
+text+= onedg[b] + " Thousands ";
+i++;}
+else{
+b = temp[i];
+b--;
+text+= twdg[b] + " ";
+i++;
+b = temp[i];
+text+= dg[b] + " Thousands ";
+i++;
+}
+if(temp[i] == 1){
+var d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;}
+else{
+d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;
+}
+if(temp[i] == 1){
+var e = temp[i];
+text+= onedg[e];
+i++;}
+else{
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];
+}
+}
+if(len == 4)
+{
+i=0;
+if(temp[i] == 1){
+var b = temp[i];
+text+= dg[b] + " Thousands ";
+i++;}
+if(temp[i] == 1){
+var d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;}
+else{
+d = temp[i];
+text+= dg[d] + " Hundred ";
+i++;
+}
+if(temp[i] == 1){
+var e = temp[i];
+text+= onedg[e];
+i++;}
+else{
+e = temp[i];
+e--;
+text+= twdg[e] + " ";
+i++;
+e = temp[i];
+text+= dg[e];
+}
+}
+document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+<h2 id="capdiv" style="color: red; background-color: lightskyblue; width: 8%; height: 6%; font-size: 200%;"><script>var text= document.write(mili);document.write("+"); document.write(sec); </script></h2>
+<input type="text" name="captcha" id="captcha" placeholder="Enter captcha" onfocus="disp();" style="background-color:blanchedalmond;"></p>
+<input id="sbmt" value="Submit" type ="submit" onclick="return check()" style="border-radius: 10px; height: 5%;">
+</form>
+
+<script>
+    var rdm;
+    if(mili%2==0)
+    {
+        rdm= mili+1111;
+    }
+    else
+    {
+      rdm= mili+2222;
+    }
+    
+    function strg()                            // create function for local data stored
+    {
+        var fstnm = document.getElementById("cstnm").value;  
+        var spl = [];
+        var spl = fstnm.split(' ');                           //split Firstname from fullname of customer
+        localStorage.setItem("abc", spl[0]);
+        var scndmail = document.getElementById("cstmail").value;
+        localStorage.setItem("xyz", scndmail);
+        var otp = mili+ rdm;
+        localStorage.setItem("chk", otp);
+        alert("OTP Is: "+ otp);
+        return false;
+    }
+</script>
+
+<script>
+    var flag;
+    function check ()
+    {
+    // initialize textbox value to another variables for validation purpose.
+    var cstname = document.cstform.cname.value;                             
+    var cstml = document.cstform.mail.value;
+    var cstpan = document.cstform.panno.value;
+    var loanamnt = document.cstform.amount.value;
+    var cap = document.cstform.captcha.value;
+    var panarr =[];
+    var mailarr=[];
+
+    panarr = cstpan;
+    mailarr = cstml;
+    if(cstname.length == "" || cstname.length <= 4)
+    {
+        alert("Please Enter Full Name");
+        document.getElementById("cstnm").focus();
+        return false;
+    }
+    if(cstml.length == "" || cstml.length <= 5)
+    {
+        alert("Please enter Mail");
+        document.getElementById("cstmail").focus();
+        return false;
+    } 
+    else
+    {
+        for(i=0;i<cstml.length;i++)
+        {
+            if(cstml[i] == '@')
+            {
+             var inv = 1;
+            }
+        }
+       if(inv == 1)
+       {
+        document.getElementById("txt").style.color = "green";
+       }
+       else
+       alert("Invalid Mail");
+       return false;
+    }
+
+    if(cstpan.length == "")
+    {
+        alert("Please enter PAN Number");
+        return false;
+    }
+    else
+      if(cstpan.length < 10)
+       {
+           alert("PAN card Number should be 10 digits");
+           document.getElementById("cstpan").value = "";
+           document.getElementById("cstpan").focus();
+           return false;
+       }
+       else
+    
+       for(i=0; i<5; i++) 
+       {
+         panarr = cstpan;
+        if(isNaN(panarr[i]))              //check first 5 characters are number
+         {
+             var flag=0;   
+         }
+         else
+         flag=1;
+       }
+       if(flag == 1)                     
+       {
+           alert("Invalid Format");
+           document.getElementById("cstpan").focus();
+           return false;
+       }
+       else
+       for(i=5; i<9; i++)                      // check 4 numerics present in pan Number as per format
+       {
+           if(isNaN(panarr[i]))
+           {
+               var cnt = 1;
+           }
+       }
+       if(cnt == 1)
+       {
+          alert("Invalid PAN");
+          document.getElementById("cstpan").focus();
+          return false;
+       }
+       else
+       if(isNaN(panarr[9]))
+       {
+         
+       }
+       else
+       {
+            alert("Invalid!!!");
+            return false;   
+       }
+    if(loanamnt.length == "" || loanamnt.length < 5)
+    {
+        alert("Please Enter Valid Loan amount");
+        document.getElementById("cstamnt").focus();
+        return false;
+    }
+    else
+    if(isNaN(loanamnt))
+    {
+    alert("Enter numbers only");
+    return false;
+    }
+
+    if(cap.length == "")
+    {
+        alert("Enter Valid Captcha");
+        return false;
+    }
+    else
+    if(cap != res)
+    {
+        alert("Please solve captcha proper");
+        return false;
+    }
+    
+    }
+    </script>
+
+</body>
+</html>

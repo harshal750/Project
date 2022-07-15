@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <h1>Thank You</h1>
+        <title>Thank You</title>
+      <!--Fetch Customer firstname and email ID from page challenge.html-->
+        <h2>Dear <span id="x"></span><script>document.getElementById("x").innerHTML=localStorage.getItem("abc");</script>,
+        Thank you for your inquiry. A 4 digit verification number has been sent to your email: <span id="y">
+        </span><script>document.getElementById("y").innerHTML=localStorage.getItem("xyz");</script>,
+        <script>var a = localStorage.getItem("chk");</script>
+        please enter it in the following box and submit for confirmation:</h2>
+         <form onsubmit="valiation()" action="http://pixel6.co/"><input type="text" id="otpval" placeholder="Enter OTP">
+            <input type="submit" value="Validate" onclick=" return validation()">
+        </form>
+            <script>
+                var cnt=0;
+                function validation()
+                {
+                    var val= document.getElementById("otpval").value;
+                    if(val == a)
+                   {
+                       alert("Validation Successful!"); 
+                   }
+                   else{
+                    cnt++;
+                    if(cnt == 3)
+                      {
+                        window.location="https://pixel6.co/error";
+                      }
+                    while(cnt <= 3)
+                     {
+                        if(val != a)
+                        {   
+                        alert("Please Enter Valid OTP " + cnt + " attempt unsuccssful");
+                        document.getElementById("otpval").value="";
+                        return false;
+                        } 
+                     }   
+                 }   
+                }
+                
+            </script>    
+    </body>
+</html>
